@@ -1,0 +1,32 @@
+                              Solution to quiz and and quiz2
+                              ------------------------------
+
+1) 
+awk -F':' '$3 == $4' /etc/passwd
+awk -F':' '$3 == $4' /etc/passwd | wc -l
+
+The answer is 20.
+
+2)
+
+Counts number of students and the teacher in the course identified by the CRN number 
+c72076.
+
+3)
+
+cd /bin
+find . -type f -size +10M
+
+And the result is:
+
+./mysqlbinlog
+./mysql
+./mysqlpump
+./emacs-24.3
+
+4)
+
+cd
+tar -czvf myfiles.tgz .
+
+
