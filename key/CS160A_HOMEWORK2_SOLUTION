@@ -1,0 +1,36 @@
+                                     CS160A  Homework #2
+                                     -------------------
+
+  Without writing any explanations, write Linux commands to achieve the following
+  tasks:
+
+
+  1) In your own home directory on hills, create a new sub directory called hw2.
+     (2 points)
+
+mkdir hw2
+
+  2) Copy the files alpha, beta, gamma, and delta from our hills public directory
+     to your own hw2 sub directory (6 points)
+
+ cd /pub/cs/amoghtan/cs160a
+ cp alpha beta gamma delta ~/hw2
+
+  3) Rename alpha, beta, gamma, and delta to alpha.txt, beta.txt, gamma.txt and
+     delta.txt .    Please DO NOT USE THE "mv"  command in this question. 
+     (6 points)
+cd hw2
+cp alpha alpha.txt
+cp beta beta.txt
+cp gamma gamma.txt
+cp delta delta.txt
+rm alpha beta gamma delta
+
+
+ 4) Delete your hw2 directory (6 points).
+    
+cd hw2
+rm alpha.txt beta.txt gamma.txt delta.txt
+cd
+rmdir hw2
+

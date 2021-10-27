@@ -1,0 +1,41 @@
+﻿Kevin Wong 
+CS 160A
+Homework #1
+Due: 9/7/2021
+
+
+1) login to hills, and switch to our public directory (12 points)
+
+How many files are in this directory. Please do not count folders and invisible Files?
+This directory contains 27 files.
+
+How many file names begin with a capital letter? What are those?
+9 files begin with a  capital letter.
+The files are:
+CS160A_HOMEWORK1
+CS160A_LESSON1
+CS160A_LESSON2
+CS160A_SYLLABUS
+EDI_info
+HOW_ACCESS_PUBLIC_DIRECTORY
+Linux_and_NASA
+LOGIN_TO_HILLS
+WELCOME_CS160A
+        
+How many filenames contain 1 or more digits? What are those?
+9 files contain 1 or more digits.
+The files are: 
+CS160A_HOMEWORK1
+CS160A_LESSON1
+CS160A_LESSON2
+cs160a_slo
+CS160A_SYLLABUS
+WELCOME_CS160A
+fall_2020
+spring2020
+Spring21
+                
+2) There are 6 files called  a, b, c, d, e, f . (8 points)
+Which one of these files is empty? How did you find out?
+Files a, c, d and f are empty. 
+I found out by using the cat command on each file a through f.

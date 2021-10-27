@@ -1,0 +1,64 @@
+                                 CS160A Final Exam Solution
+                                 --------------------------
+
+Each question is worth  10 points.
+
+
+ 1) Please give the names of 3 Unix versions.
+    ans:   HP/UX, Sun Solaris, IRIX, ULTRIX, SCO Unix, AIX, MINIX, XINUX
+
+
+ 2) Please give the names of 3 Linux distros.
+    ans: Ubuntu, Debian, Mint
+
+ 3) Please write a command to display the name of the faculty who is in charge of
+    teaching the course identified by this CRN number: c79625    
+
+    ans: cat /etc/group | grep "^c79625" | cut -d: -f 4 | cut -d, -f 1 
+    OR
+         getent group "c76925" | cut -d: -f4 | cut -d, -f1
+
+
+ 4) Write a command to display the loggin-id of those users who are currently
+    logged-in to the hills system, and their login-ids begin with "a".
+
+    ans: who | grep "^a" | awk '{print $1}'
+    OR
+         users | grep "^a"
+
+
+ 5) What is the equivalent of the following command without using "awk"?
+    ls -l | awk '{print $5}'
+
+    ans:   ls -l | tr -s " " " " | cut -d" " -f5
+   
+
+6)  What does the following command do? 
+    ls -l | cut -c2-4
+
+    ans: This command displays the file permissions for the owner of the files.
+
+7)  What do the following commands do?
+    head -1 myfile  > his_file
+    tail -1 myfile >> his_file
+    
+    ans: These 2 commands put the first line and last line of the file "my_file"
+         to the file "his_file"
+
+8)  What is the equivalent of "cat -n myfile"  command?
+
+    ans:  nl myfile
+
+9)  Please show how to count number of files in the all_my_files.tgz compressed
+    archive file. I need to see your command.
+  
+    ans:   tar -ztvf all_my_files.tgz | wc -l
+
+
+10) What is the numeric representation of the following file permission?
+    rw-r-x--x
+
+    ans:  651
+
+
+

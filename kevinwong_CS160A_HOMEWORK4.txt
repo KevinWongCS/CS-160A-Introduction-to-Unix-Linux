@@ -1,0 +1,45 @@
+Kevin Wong 
+CS 160A
+Homework #4
+Due date  (9/28/2021).
+Each question is worth 4 points.
+
+1) Please show the last 10 students login-ids on hills. Please make sure to display
+   the login-ids only. The login-ids are all part of the /etc/passwd file.
+   Please show your command.
+
+tail /etc/passwd | cut  -d":"  -f1
+  
+   
+   use cut command, user names have no patterns so regex or grep isn't good in this case.
+   
+
+2) Using the "date" command, please display the "year" field of this command.
+   You need to use the "cut" command to answer this question.
+
+date | cut -d" " -f6
+
+3) The 7th field of the /etc/passwd file is representing the "shell". Please
+   show how to display the first 10 shells from the /etc/passwd file on hills.
+   You need to display only the shells from this file. 
+
+head /etc/passwd | cut -d: -f7
+
+4) Please show how to count number of users who are currently lodged-in to hills.
+
+who | wc -l
+
+5) What are the contents of the file "myfile" when the following commands are
+   completed:
+   echo "good bad nice ugly pretty"  > myfile; sort myfile > myfile; cat myfile
+   You need to explain what is really happening.
+
+The contents of "myfile" are "null" or no content after the commands are completed. 
+I believe the command intended to sort the text: "good", "bad", "nice", "ugly", 
+and "pretty", but the text was entered as a single line of text, so "sort myfile"
+wouldn't do anything. 
+
+The "sort myfile > myfile" also doesn't work because the ">" redirection operator has
+precedence before the "sort" command, so the command is literally creating an empty file
+"myfile", sorting it, and storing the stdout from "sort" command.
+

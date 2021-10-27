@@ -1,0 +1,75 @@
+                                  Solution To CS160A_HOMEWORK6
+                                  ---------------------------- 
+
+
+1) What does the following command do? 
+
+   date | tr -d "[^A-Za-z]" | tr -s ' ' ' '
+
+   The command displays the date without letters and repeated space. So the result is
+   the numerical portion of the day of the month following by time (hour:minute:second) 
+   followed by the year, separated by one space. 
+   A sample of out put would be:  15 20:35:54 2021
+
+2) Find number of users on hills whose user ids are greater than 99.
+   For your information, user ids are in the 3rd field of the /etc/passwd file
+
+	Answer: 9395
+
+	cat /etc/passwd | cut -d: -f3 | egrep "^[0-9]{3,}$" | wc -l
+
+
+
+3) Find all logged-in users with the user names of at least four characters.
+
+	Answer: 
+
+	who | cut -d' ' -f1 | egrep "^.{4,}$"
+        OR
+        users | tr ' ' '\n' | egrep "^.{4,}" 
+
+A sample output would be:
+
+xxie54
+scelebio
+tdinh3
+jhuan373
+lshimmin
+ghuang78
+jmille24
+vkrifuks
+laponzam
+dputnam
+amoghtan
+awong
+
+
+4) Please show how you can display the following message on hills:
+
+
+My login-id is: XXXX
+where XXXX is your login-id. For example, for me the output should look like:
+My login-id is: amoghtan
+
+
+	Answer:
+
+	echo "My login-id is: $(whoami)"
+
+
+5) On hills, those students who are not allowed to access the system, have "/sbin/nologin"
+   in their shell field (field number 7 of the /etc/passwd).
+   Please show me how to count number of students who are disabled from accessing hills.
+   I need to see your command. Your output should look like the following:
+
+   The number of disabled students on hills: whatever 
+
+
+Answer:
+
+echo "The number of disabled students on hills: $(cat /etc/passwd | cut -d: -f7 | grep "^/sbin/nologin$" | wc -l)"
+
+	The number of disabled students on hills: 30
+
+
+

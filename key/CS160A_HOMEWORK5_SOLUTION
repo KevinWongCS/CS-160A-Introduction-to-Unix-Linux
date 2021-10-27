@@ -1,0 +1,47 @@
+                              CS160A Homework5 Solution
+                              -------------------------
+
+1) In your home directory on hills, create a soft link to our public directory
+   Name of the link should be "cs160a". You need to show me your command.
+cd
+ln -s /pub/cs/amoghtan/cs160a cs160a
+
+2) How many soft links are in the /etc subdirectory? You ned to show me your command.
+
+ ls -l /etc/ | grep '^l' | wc -l
+14
+
+3) In /bin on hills, how many commands consist of only 2 letters. For example
+   cp, mv, ls, and so forth.
+   You need to show me your command.
+cd /bin
+ls | grep "^..$" | wc -l
+43
+
+4) Please show me how many times the word "Linux" is repeated in the file
+CS160A_LESSON6. 
+You need to show me your command.
+
+grep "Linux" CS160A_LESSON6
+
+grep  "Linux" CS160A_LESSON6 | wc -l
+6
+Since "Linux" is repeated once/line, the above command works well. We can also
+do:
+grep  -c "Linux" CS160A_LESSON6
+
+But if "Linux" shows several times per line, then the better solution is:
+grep  -o "Linux" CS160A_LESSON6 | wc -l
+
+
+5) Please show the names of those folders in the /etc directory on hills that have
+7 hard links. How many of them are there?
+You need to show me your commands.
+
+cd /etc
+ls -l | grep "^d" | tr -s ' ' ' ' | cut -d' ' -f2 | grep "^7$" | wc -l
+
+The answer is:
+4
+
+

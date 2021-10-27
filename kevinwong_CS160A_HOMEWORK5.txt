@@ -1,0 +1,56 @@
+Kevin Wong 
+CS 160A
+Quiz#1 & QUIZ#2
+Due date October/12/2021 
+Each question is worth 4 points.
+
+1) In your home directory on hills, create a soft link to our public directory
+   Name of the link should be "cs160a". You need to show me your command.
+
+ln -s /pub/cs/amoghtan/cs160a cs160a
+
+2) How many soft links are in the /etc sub directory? You need to show me your
+   command.
+
+14 soft links in the /etc sub directory.
+[kwong43@hills ~]$ ls -l /etc | grep '^l' | wc -l
+14
+
+3) In /bin on hills, how many commands consist of only 2 letters. For example
+   cp, mv, ls, and so forth.
+   You need to show me your command.
+
+43 commands consist of only 2 characters.
+ls /bin | grep '^..$' | wc -l
+
+4) Please show me how many times the word "Linux" is repeated in the file
+   CS160A_LESSON6.  
+   You need to show me your command.
+
+The word "Linux" is repeated 6 times.
+cat /pub/cs/amoghtan/cs160a/CS160A_LESSON6 | grep -o "Linux" | wc -w
+
+5) Please show the names of those folders in the /etc directory on hills that have
+   7 hard links. How many of them are there?
+   You need to show me your commands.
+
+There are 4 folders in the /etc directory that contain 7 hard links.
+
+[kwong43@hills ~]$ ls -l /etc | grep '^d' | cut -c13- | grep '^ 7'
+ 7 root root        134 Jun  9 05:51 NetworkManager
+ 7 root root        133 Jun  9 05:51 firewalld
+ 7 root root        107 Jun 30  2017 gconf
+ 7 root root       4096 Jun  9 05:53 sysconfig
+[kwong43@hills ~]$ ls -l /etc | grep '^d' | cut -c13- | grep '^ 7' | wc -l
+4
+
+### or ###
+
+[kwong43@hills ~]$ ls -l /etc | awk '{print $2}' | grep '^7'
+7
+7
+7
+7
+[kwong43@hills ~]$ ls -l /etc | awk '{print $2}' | grep '^7' | wc -l
+4
+[kwong43@hills ~]$

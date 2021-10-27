@@ -1,0 +1,1240 @@
+CS160A_LESSONS 1 TO 10 ALL IN ONE DOC
+
+############################## LESSON1 #########################################
+  Dear CS160A Students,
+
+  I hope all of you have been able to login to our hills server, and also have
+  been able to switch to our public directory, and see the files that I have
+  posted for you.
+  For your information, most of those files are also available on Canvas.
+
+  Please read chapter one in our textbook.
+  Chapter 2 will not be covered in this course.
+  Please read Chapter 3 as well.
+
+  Next week we are discussing about chapter 4.
+
+
+  Today, we would like to discuss about some of the very useful commands of Linux.
+
+  The date command displays information about the current date and time.
+  The cal command displays information about the calendar.  
+  
+  what does             cal  -y
+  do?
+
+  Linux commands are normally come with many options. Options are all begin with
+  a dash. For example in the above command (cal  -y), -y is an option.
+  To get information about the specific command, we need to use the "man" command.
+  For example:
+  man   date
+
+  would display information about the date command.
+  man  man
+  would display information about the man command itself.
+
+  To display the contents of a file, we use the cat command. For example
+  cat myfile    displays the contents of the file called "myfile"
+
+  By default, all of the commands in Linux are in lower case. For example
+  CAT myfile       does not work.
+
+  Always put one or more spaces between the elements of your command. For example
+  cat  myfile    is correct, but
+  catfile        is not correct.
+  
+  To display line number in front of each line of the file, we use:
+  cat -n  myfile
+  We can also use the "nl" command to achieve the same goal. For example:
+  nl  myfile
+
+  The cat command would accept more than one filename. In this case, the cat command
+  would display the contents of these files one after each other with no 
+  separation. This action is called "catenation". That's what the name of the cat
+  command comes from.
+  
+  So, in our public directory on hills, you can display the contents of a file
+  by using the cat command. For example:
+  cat syllabus
+  would display the contents of the syllabus file for you.
+ 
+  The  ls command would display the names of all of your files, and    ls  -l
+  would display more information about all of your files.
+
+  I have posted the first homework assignment in our public directory on hills as well as
+  Canvas.
+
+  You need to do the homework, and e-mail me your answers. Due is 9/7/21 (next Tuesday).
+
+############################## LESSON2 #########################################
+
+From the previous lesson, we learned that the "cat command" would display the
+contents of a file. And also,  cat file1  file2  file3 
+would display the contents of file1, file2, and file3.  
+cat -n  filename
+displays the contents of the file "filename" with line numbers in front of each line
+of the file. By the way, the "nl" command would also do the same. So, nl  filename
+and   cat -n filename  are pretty much the same.
+
+One of the problems with "cat"  is, if you are displaying a large file, the contents
+of your file will scroll up and you can not see the entire file. 
+There are couple of commands available to display a portion of a file (screen after
+screen). One of these commands is "more". So, the following line would display one
+screen from your file, and makes a pause. If you hit the return key, another screen
+will display and so forth: 
+more  myfile
+
+If you decide to abort displaying, then you need to hit the CTRL-C  (control C) 
+key combination. 
+The more command would display your file page after page from top to the bottom.
+There is another command with the name "less", which does what ever "more" does
+plus many more. For example, the less command allows us to display pages of our
+file from top to the bottom, and bottom to the top.
+This is ironic that this command is called "less", but it does much more than
+the "more" command!!!
+
+How to create a file
+--------------------
+
+There are many ways that we can create a file. By far the easiest (and more 
+dangerous though) is the ">" operator. For example;
+
+>  myfile
+
+creates the file called 'myfile". please note that, if "myfile" already exists,
+then its contents will be cleared (wiped out) immediately. So, before using this
+operator, please make sure what you are doing.
+Another way to create a file is using the "touch" command. For example:
+touch myfile
+would create the "myfile" file.
+
+How to delete a file
+-------------------
+
+The "rm" command is used to delete a file. So,
+rm  myfile
+would delete the "myfile" file. Please note that if a file is deleted, there is
+NO WAY to bring it back again. So, be careful, when you are using the "rm"
+command. 
+So to do some practice, lets create some files:
+
+> good
+> bad
+> nice
+touch ugly
+touch pretty
+
+So, we created 5 files. If you use the "ls" command, all of these filenames will
+be displayed.
+to delete them, we do the following:
+
+rm  good  bad  nice  ugly  pretty
+
+So all of them are deleted now. Your "ls" command would show none of them now.
+
+Some times, you need to see those who are currently logged in to our server.
+The "who" command would show them all.
+Some times we also want to do what those people are doing. So the "w" command
+would reveal all of these secrets!!!
+Sometimes, we would like to know more about a specific user. In this case, the
+command 'finger" would help. For example:
+finger jlin5
+would display information about the user "jlin5"
+In some modern versions of Linux, the finger command is "deprecated", and the 
+new command "pinky" should be used. So if your system is not happy with "finger", 
+then the "pinky" would work for you.
+
+Working with directories
+------------------------
+
+To create a directory, we are using the "mkdir" command. for example:
+mkdir golden
+
+Would create the 'golden' directory.
+To get into this directory, we do:
+
+cd  golden
+
+And now we are in the "golden" directory. Lets create couple of files in this
+newly created folder:
+
+touch gold
+touch silver
+touch iron
+
+The "ls" command would show the existence of these 3 files.
+To create a several nested folders, we use the -p option. For example,
+mkdir -p snake/bird/lion
+would create the snake folder. Then inside the snake folder, it will create the
+bird folder, and inside the bird folder it will create the lion folder.
+So, the above command is equivalent to:
+mkdir snake
+cd snake
+mkdir bird
+cd bird
+mkdir lion
+
+To delete a folder, we use the command "rmdir".
+Please make sure to remove all of the files from your folder before deleting the
+folder. Any attempt to delete a non-empty folder, will result in an error message.
+
+So, to remove these files:
+
+rm  gold silver iron
+
+Then I go to the parent directory:
+
+cd ..
+
+and then delete the folder:
+rmdir golden  .
+Please pay attention to the command "cd  .." . This command means go to the
+parent directory of the "golden" directory.
+
+To copy a file to another file, we use the "cp" command.
+So,
+cp  good  bad
+would copy the file "good" to the "bad" file.
+To move a file, we use the "mv" command. For example;
+mv  short  long
+will move the file "short"  to the file "long". In his case, the "short" file
+is deleted, and the "long" file is created.
+
+Some tips!!
+-----------
+
+Suppose my home directory is "/usr/abbas".
+To switch to this home directory, I can do the following:
+
+cd  /usr/abbas
+OR
+cd  ~
+
+I am using the tilde character in the above command.
+
+Suppose I type the following command:
+
+cd snake/bird/lion
+
+Now I am in the lion folder. To go to the snake folder, I can do:
+cd ../..
+
+Each ".." means the parent folder.
+
+############################## LESSON3 #########################################
+ 
+Short History of UNIX
+---------------------
+UNIX development was started in 1969 at Bell Laboratories in New Jersey.
+Bell Laboratories was (1964-1968) involved on the development of a multi-user,
+time-sharing operating system called Multics (Multiplexed Information and Computing
+System). Multics was a failure. In early 1969, Bell Labs withdrew from the
+Multics project.
+
+Bell Labs researchers who had worked on Multics (Ken Thompson, Dennis Ritchie,
+Douglas McIlroy, Joseph Ossanna, and others) still wanted to develop an operating
+system for their own and Bell Labs programming, job control, and resource usage needs.
+When Multics was withdrawn Ken Thompson and Dennis Ritchie needed to rewrite an
+operating system in order to play space travel on another smaller machine
+(a DEC PDP-7 [Programmed Data Processor 4K memory for user programs). The result was
+a system called UNICS (UNiplexed Information and Computing Service) which was an
+'emasculated Multics'.
+
+The first version of Unix was written in the low-level PDP-7 assembler language.
+Later, a language called TMG was developed for the PDP-7 by R. M. McClure. Using
+TMG to develop a FORTRAN compiler, Ken Thompson instead ended up developing a compiler
+for a new high-level language he called B, based on the earlier BCPL language
+developed by Martin Richard. When the PDP-11 computer arrived at Bell Labs,
+Dennis Ritchie built on B to create a new language called C. Unix components were
+later rewritten in C, and finally with the kernel itself in 1973.
+
+Unix V6, released in 1975 became very popular. Unix V6 was free and was distributed
+with its source code.
+
+In 1983, AT&T released Unix System V which was a commercial version.
+
+Meanwhile, the University of California at Berkeley started the development of its
+own version of Unix. Berkeley was also involved in the inclusion of Transmission 
+ontrol Protocol/Internet Protocol (TCP/IP) networking protocol.
+
+The following were the major mile stones in UNIX history early 1980's
+
+AT&T was developing its System V Unix.
+Berkeley took initiative on its own Unix BSD (Berkeley Software Distribution) Unix.
+
+Sun Microsystems developed its own BSD-based Unix called SunOS and later was renamed
+to Sun Solaris.
+
+Microsoft and the Santa Cruz operation (SCO) were involved in another version of UNIX
+called XENIX. Latter on, XENIX was purchased by the Santa Cruz Operation company and
+renamed to SCO Unix.
+
+Hewlett-Packard developed HP-UX for its workstations.
+
+DEC released ULTRIX.
+
+In 1986, IBM developed AIX (Advanced Interactive eXecutive).
+
+The Silicon Graphics company developed IRIX for its workstations.
+
+Brief History of Linux
+----------------------
+GNU/Linux (commonly referred to as just Linux) is a free, open-source, customizable
+operating system based on the Linux kernel and GNU utilities and libraries. It is
+developed by thousands of developers and used by millions of people, companies, and
+governments around the world. It is an alternative solution to other OS's such as
+Windows and Mac OSX and comes in many different distributions or flavors. Some of the
+most popular distributions are Ubuntu, Red Hat Enterprise Linux (RHEL), Debian, Fedora,
+CentOS, OpenSuSE, Arch, Mint, and Solus. It includes software found in other OS's for
+common tasks such as running office applications, multimedia, graphics, and gaming. It
+also provides powerful tools for programming and web development. Linux is built to run
+on desktops, servers, Internet Of Things devices and mobile devices (Android).
+
+Who invented Linux?
+-------------------
+Linux is germinated as an idea in the mind of young and bright Linus Torvalds when he
+was a computer science student. He used to work on the UNIX OS (proprietary software)
+and thought that it needed improvements. However, when his suggestions were rejected by
+the designers of UNIX, he thought of launching an OS which will be receptive to changes,
+modifications suggested by its users. So Linus devised a Kernel named Linux in 1991.
+However, he would still need programs like File Manager, Document Editors, Audio -Video
+programs to run on it. As time passed by, he collaborated with other programmers in
+places like MIT and applications for Linux began to materialize. So, around 1991, a
+working Linux operating system with some applications was officially launched.
+This was the start of one of the most loved and open-source OS options available today.
+The earlier versions of Linux were not so user-friendly as they were in use by computer
+programmers and Linus Torvalds never had it in mind to commercialize his product.
+This definitely curbed Linux's popularity while another commercially oriented operating
+system, Windows, got famous. Nonetheless, the open-source aspect of the Linux operating 
+system made it more robust and accessible.
+
+############################## LESSON4 #########################################
+
+Wildcards in BASH
+-----------------
+
+Wildcards are group of specific characters to group bunch of files and directories
+in our commands.
+for example:
+
+ls  *.txt
+displays all files with the .txt extension. In this example "*" is a wildcard.
+ls ??
+displays all files consisting of only 2 characters in their file names.
+
+Please see the following link for the wildcards instruction:
+
+https://linuxhint.com/bash_wildcard_tutorial/
+
+In this lesson, we are learning about some of the very useful commands in Linux.
+
+The "echo" command echos back your text on the terminal.
+For example:    echo "Hello John"   would display   Hello John 
+and   echo "today was warm and nice" would display  today was warm and nice.
+
+Since "*" in the shell will represent all of your files in the directory, 
+echo *
+will display all of your filenames. So,  the ls command and echo * 
+would both do the same job.
+
+The 'hostname' command would display the name of your computer. 
+If you type hostname on hills, what are you going to see?
+
+The command    hostname  -i
+would display the IP address of your computer. For example if your use this
+command on hills, you will see   147.144.1.2
+
+The command "free" would display info about the memory of your computer.
+
+df command Shows the amount of disk space used and available on Linux file systems.
+du command  Display the amount of disk space used by the specified files and for each
+sub directory.
+
+To see the size of your file, number of lines in your file, and number of words in
+your file, you can use the "wc" command. This command produces 3 pieces of information
+for you.  So,  wc  myfile
+would display how many characters (the size of the file), how many lines, and how
+many words are in "myfile" file.
+wc -l  myfile     displays number of lines
+wc -w  myfile     displays number of words
+wc -c  myfile     displays number of character
+
+############################## LESSON5 #########################################
+
+Most of the Linux commands and utilities need some sort of data to work on. For example
+cat myfile
+
+The cat command needs the file "myfile", or  wc myfile  also needs the file "myfile".
+
+The Linux commands not only receive data from data files, but they are also able to
+receive data from some other sources such as "pipe", "keyboard", "network and Internet", 
+and so forth. This flexibility, makes the Linux operating system one of the most
+powerful OS in the world.
+
+Normally, we use one command per line, but we are also able to put several commands
+side by side separated by semi-colons on one line. For instance:
+
+date
+cal
+cat myfile
+
+could be re-arranged as:
+
+date; cal; cat myfile
+
+OR
+
+mkdir silver;  cd silver; touch myfile; cd ~
+
+The output of the Linux commands normally is being displayed on the screen of your
+terminal. For example,  "cat  myfile"   would display the contents of the file "myfile"
+on the screen. But, we can re-direct the output to another file. For example:
+
+ls  > myfile
+
+The above command, places the output of the ls command to the file "myfile", and
+nothing comes on the screen. 
+
+Please note that, the above command would delete the contents of  "myfile", and then
+puts the output of the ls command into it. To keep the previous data in that file,
+we do the following:
+
+ls  >>  myfile
+
+So, we are appending the output of the ls command to the contents of "myfile", and
+nothing is destroyed.
+
+Most of the Linux commands are able to receive data by re-directing the file to them.
+For example:
+
+wc  -l  < myfile 		"directing "myfile" to the word-count lines command"
+that would count number of lines in the "myfile" file. 
+
+Question:  what is the difference between  "wc -l myfile"  and "wc -l < myfile"  ?
+
+
+//////////Kevin: "They appear to do the same thing, except the former outputs the file name on the same line
+at the end./////////
+
+
+
+The output of one command would pipe to another command. For example, to count
+number of files in your directory we do:
+pipe is like "flowing" or "joining" commands.
+Image result for what does | pipe do in linux
+"In Linux, the pipe command lets you sends the output of one command to another."
+
+ls  |  wc -l
+In the above example, the vertical bar "|" is a pipe.
+
+ls | wc -l > afile
+
+the file "afile" has the number of files in your directory.
+
+
+Some useful commands
+--------------------
+As you might know, Linux has many commands. These commands are normally small executable
+files and are able to act individually as well as being combined together.
+You can find most of these commands in the following folders on hills:
+
+/bin
+/usr/bin
+/sbin
+/usr/sbin
+
+Now lets talk about some of the very useful commands in Linux.
+
+
+The "echo" command is displaying your text. For example:
+
+echo  "Hello John"
+would display     Hello John
+
+QUESTION:  what does       echo * | wc -l
+do?
+kevin wong: "echo *" appears to display all files in directory in one line.
+			"echo * | wc -l sends the output of echo * to the word count lines command.
+			Have to do echo * | wc -l > "filename" to store output
+
+For your information, "*" in the above command will be converted to all of your files
+in your directory. So, if you type "rm *", then ALL of your files will be deleted.
+So, be very careful!
+
+echo "good"; echo "bad"; echo
+would display
+good
+bad
+
+but 
+echo -n "good"; echo -n "bad"; echo
+would display 
+goodbad
+
+echo "Abbas" | wc -c
+displays "6", but   echo  -n "Abbas" | wc -c
+would display "5".  Please try to understand why this happened.
+
+The "-n" option would suppress the new line character. As a result, "good" and "bad"
+are displayed on the same line.
+
+The "head" command would display the first 10 lines of your file. For example:
+
+head  myfile
+
+You can display any number of lines. For example:
+
+head -4  myfile
+would display the first 4 lines.
+
+The "tail" command would display the last 10 lines of a file. For example:
+
+tail  myfile
+
+You can also display any number of files from the end of your file. For example:
+
+tail  -6  myfile
+would display the last 6 lines of the the file "myfile".
+
+The "tac"  command is acting opposite of the "cat" command. It displays the file
+from the bottom to the top.  So,  tac myfile  
+displays the file "myfile" from the last line to the the first line.
+
+The "sort" command would sort the file in alphabetical (or numerical) order.
+For example:
+
+sort  myfile
+would sort the file "myfile" in ascending order. 
+sort -r myfile would sort the file "myfile" in descending order.
+sort -n  myfile
+would sort the file "myfile" in numerical order.
+Suppose we have a file called "names" containing the following data:
+
+susan
+david
+alex
+john
+
+The command:      sort names
+would display the following output:
+
+alex
+david
+john
+susan
+
+Please note that the contents of the file is still unsorted.
+
+sort  names  > temp;  mv temp names
+would sort the contents of the file as well.
+
+ls | sort -r  | head -1
+
+would sort all of my files in descending order, and the would display the very first
+filename.
+
+The "cut" command is one of the most useful command in Linux. It simply cuts
+part of your text. For example:
+
+cut  -d:  -f1  /etc/passwd
+would display the first field of the /etc/passwd file. In this file, fields are
+separated by a ":' delimiter.
+So, in the above command, I am saying the delimiter is a ":" and  -f1  simply means
+field number 2.
+The default delimiter is a tab. For example, in the following line, names are
+separated by a tab:
+
+echo "John	Alex	David	Sue" | cut -f3
+will display 'David".
+
+And
+
+echo "John	Alex	David	Sue" | cut -f2-
+would display:
+Alex	David	Sue
+
+-f2-    simply means from the second column to the end of the line.
+echo "Abbas Moghtanei"  | cut  -d' ' -f2 | cut -c1
+would display "M"
+Please note that the delimiter is a space.
+
+ls -l | cut -c1
+would display the very first column of "ls -l" output.
+
+ls -l | cut -c2-10  
+would display columns from 2 to 10 of the ls -l output.
+ 
+ 
+echo "John,Lin"  | cut -d, -f2
+would display "Lin"
+
+echo "good-bad-nice-ugly" | cut -d-  -f3-4 
+would display       nice-ugly
+
+############################## LESSON6 #########################################
+
+Inode
+-----
+
+   Inodes are the numerical representation filenames in Linux. 
+   Inodes are unique numbers. That means, each filename has its own inode number
+   totally different from the other inodes. 
+   To see the inodes of your file, use the "-i" option of the "ls" command:
+
+   ls -i
+
+Links
+-----
+######### HARD LINKS ###############
+   When we create a file, the filename that we use for that file is a hard link
+   to that file. 
+   Imagine, a file is like a balloon, and the hard link to that file is like a
+   string that holds the balloon. 
+   We can create any number of hard links to any file. Imagine, a balloon has 
+   several strings hooked up to it, and each string is a hard link to that file.
+   in the following example, I'm creating a hard link to  "myfile".
+
+   ln myfile orange
+   In the above example, orange is a hard link to the file "myfile" . So, if we use
+   "ls -l  myfile  orange"
+   we will see all information about myfile and orange.
+   The second field of the output shows "2", that indicates the number of links in
+   the "myfile" file.
+
+
+########### WHY WE USE LINKS ################
+   One of the main advantage of a hard link is "file protection". If the "myfile" 
+   file is deleted, the "orange" link still keeps the file alive. The file will be
+   gone, if the last link from the file is also removed. So to delete the file
+   "myfile", we should do the following:
+   rm orange
+   rm myfile
+   
+   The other advantage of hard link is creating another name for the file.
+   Suppose, we have a filename   alexandria1948. We can create the hard link to
+   this file like:
+   ln  alexandria1948  alex
+   So, the short name "alex" is much easier to use.
+   Please note that if 2 or more files are hard links, then the have the same inodes.
+   So, 
+   ls  -i alexandria1948  alex
+   would display the same inodes .
+  
+  
+  ################SOFT LINKS#######################
+   There is another kind of link is called soft link (also called symbolic link).
+   Unlike hard link, symbolic line is a file itself. Another difference between
+   hard links and symbolic links is the capability of linking to a sub directory.
+   Hard links are not able to link to a folder, but soft links are able to do that.
+   To create a soft link, we are using the "-s" option in the ln command. For example:
+   ln -s  myfile  hisfile
+   So, "hisfile"  is a symbolic link to the file "myfile"
+   Please pay attention to the following example:
+   ln -s  /pub/cs/amoghtan/cs160a  good_course
+   Now, good_course is a symbolic link to our public directory on hills. So, to 
+   access this public directory, we can do the following:
+   cd  good_course
+
+   If you use the "ls -l"  command, you will see the letter "l" in the first column
+   of the output, and also the name of the file is shown as:
+   good_course ->  /pub/cs/amoghtan/cs160a
+   So, the arrow in the output indicates it is a soft link.
+   The rm command can be used to delete the symbolic link.
+
+   Some useful commands
+   --------------------
+ 
+   "whereis"  locates  the  binary, source and manual files for the specified command
+       names.  For example "whereis cp" would display:
+    cp: /bin/cp /usr/share/man/man1/cp.1.gz 
+   
+    "which" command is also locates the file. For example "which cp" would display
+    /bin/cp
+
+    "ls -l"
+    This command would display files in the long format. It provides a comprehensive 
+    information about files. Each line consists of 9 fields separated by spaces.
+    The first field consists of 10 columns. The first column is showing the type of
+    the file. For example, "d" show it is a directory. "-" means it is a regular file.
+    "l" means it is a symbolic link, and so forth.
+    The next 9 columns are showing the file permission. Soon I'll talk about "file
+    permission". The next field is called "link counter" that shows number of hard links
+    to the file. The next field shows the ownership of the file. The next field 
+    shows the group name of the file. The fifth field shows the file size. Fields 6, 7
+    and 8 are showing the month and year of file creation (or modification). The last
+    field is the name of the file. 
+
+    "grep"
+    "grep" is one of the most important command in Linux. It is the "search" command.
+    It searches thru a file (or files" looking for the target. For example:
+
+    grep "Linux"  CS160A_LESSON1
+    would display those lines that contain "Linux" in the CS160A_LESSON1 file.
+    
+    "grep" can search thru more than one file. For example:
+    grep "Linux" CS160A*
+    It searches thru all of the CS160A files to find "Linux".
+
+
+    ls -l | grep '^d'
+    would display all of the directories. '^d' means those lines that "begin" with
+    letter "d".  
+    ls -l | grep '^l'
+    would display all of the symbolic links . '^l' means those lines that "begin" with
+    letter "l" .
+    ls | grep "n$"    
+    displays all of those filenames that end for the letter n. "n$" means ends with "n".
+    ls | grep "^..$"
+    displays all of those filename consist of only 2 characters.   
+    "^..$" means only 2 character.  "^.....$" means only 5 characters.
+      
+    In the future, I'll cover more info about "grep". Before finishing the lesson,
+    I need to say, there are 3 types of grep command:
+    grep  
+    fgrep
+    egrep 
+    
+    "grep" is the standard grep command the we are using most of the time.
+    "fgrep"  is the fast grep. It is the most efficient command in the grep family.
+    "egrep"  is the extensive grep. It is able to search for the most complicated 
+    search situation. 
+    You can restrict yourself to use only the "grep" command. in fact:
+    grep -E      is the same as "egrep"
+    grep -F      is the same as "fgrep"
+
+############################## LESSON7 #########################################
+
+In "LESSON6", we discussed  about grep. This command is one of the most useful command
+in Unix/Linux. The command has several options. 
+The following is a good link to learn more about "grep".
+https://shapeshed.com/unix-grep/
+
+The grep command is heavily relying on the search pattern that the user is providing.
+The search pattern is called "Regular Expression", or "regex" or "regexp". 
+
+If you remember, some commands in Linux are using wildcard to group the filenames.
+For example:  ls  a*
+would display those filenames that begins with letter "a". Or rm [aeiou]*
+would delete those files that their names begin with either a, or e or i or o or u.
+rm ???   would delete files that their names consist of only 3 characters.
+
+Wildcards are providing patterns for filenames, and are used by those commands 
+that are dealing with files, such as ls, cp, mv, cat, rm, and so forth.
+
+Regular Expression
+------------------
+##### REGEX == REGULAR EXPRESSION ######
+Regular expressions are patterns used for recognizing, selecting and grouping
+texts (not necessarily filenames). For example, grep is using regex very often.
+
+When you are using:  grep  "Linux"  CS160A_HOMEWORK1
+"Linux" in the above command is a regex. Or when you are using:  ls | grep "^d"
+"^d" is a regex. 
+There are many commands in Unix/Linux that are using regex such as: grep, awk, sed,
+vi, ed, ex and several others. 
+
+In the previous LESSON, I introduced you with some regex characters such as "^", and
+"$" . The former one means "begins with ("^"), and the later one means "ends with ("$").
+
+In this lesson, we are learning more regex characters.
+A period "." means any one character. Therefore, "..." means 3 characters.
+ls | grep "..."  means any filename with a minimum 3 characters. 
+ls | grep "^...$" means any filename with exactly 3 characters.
+
+Suppose, I would like to display those lines of the file "intro" that ends with a
+period "." . The following command does not work:
+grep ".$"  intro
+Because, a period means any one character. To specify a period, we need to do 
+the following:
+grep "\.$"  intro
+By placing a back slash in front of the period, we are saying this period is really
+a period!!! This action is called "scaping" the character. 
+QUESTION: What does the following line do:
+grep "\$$" intro
+### \$ escapes the regular function of $. grep would match words that ends with $.
+
+QUESTION: What does the following line do:
+grep "\." intro
+### \ scapes the ".", so grep would match "." in "intro" maybe....
+
+In regex, "*" means zero or more characters. For example:  "k*" means zero or more
+K.
+"[a-z]*" means zero or more lowercase letters. 
+In regex, "+" means one or more characters. For example:  "k+" means one  or more
+letter k. 
+In regex, "?" means zero or one character. For example:  "k?" means zero  or one
+k. 
+
+grep "[Tt]he" intro
+
+would display those lines that begging with "The" or "the".
+grep "[1-9][01]?" 
+means: one digit one to nine OR 2 digits one to nine followed by zero or one.
+So, grep would match:  5   or 8  or 3  or 10 or 41 or 11 and so forth.
+
+grep "XX*"
+means "X" or "XX"  or  "XXX" and so forth. 
+
+grep "^[A-Z].*[0-9]$"
+means those lines that begin with a capital letter and end with a digit. For example:
+B7
+Good9
+I like Linux 18.1
+
+ls | grep "^.......$"
+means display those filenames with 7 characters. As you see, each period is 
+representing one character. But counting number of periods is error prone, and
+sometimes boring! 
+We have the better way to do that:
+
+ls | grep "^.\{7\}$"
+Please note that, we need to escape the left and right brace characters.
+If we use egrep, there is no need for such a scaping:
+ls | egrep "^.{7}$" 
+
+ls | egrep "^.{7,12}$"    means those filenames with the names 7 to 12 characters
+long.
+ 
+ls | egrep "^.{7,}$"    means those filenames with minimum 7  characters long
+
+ls | egrep "^.{,7}$"    means those filenames with maximum 7  characters long
+
+egrep "^[A-Z]{24}$" intro
+means those lines of the file "intro" consisting exactly 24 uppercase letters.
+grep "^$"  intro
+means those empty lines in the file "intro". Empty lines are those lines with 
+nothing in them. 
+grep "^ $"  intro
+means those lines containing  exactly one space in the file "intro". 
+
+Saving Matched Characters
+-------------------------
+It is possible to to capture the characters that are matched within a regular -
+expression by enclosing the characters inside parentheses. These capture characters
+are stored in "registers" numbered 1 through 9.
+As an example, the regular expression   "^(.)\1" will match the first character
+on the line, whatever it is, and store it into register 1. 
+To retrieve the characters stored in a particular register, the construct \n is
+used, where n is from 1-9.
+So the regular expression "^(.)\1" will match the first character on the line, and
+store it in register 1. Then the expression will match whatever is stored in register
+1, as specified by \1. 
+The net effect of this regular expression is to match the first two characters on 
+the line if they are both the same character.
+So,  egrep "^(.)\1"  intro
+will display those lines that have the first and second characters the same. 
+For example;
+
+AAA is a very famous insurance company.
+bb is the name of a famous boutique in LA.
+
+Another example:
+
+egrep "^(.).*\1$"  intro
+matches all lines in which the first character on the line is the same as the 
+last character on the line. For example:
+
+my mom is with him
+
+Another example:
+
+egrep "^([0-9]+)([a-zA-Z]+).*$" intro
+
+will place all of the digits from the beginning of the line to register 1, and
+all of the following letters into register 2.
+
+Please note that, in order to avoid escaping my parentheses, I am using egrep.
+
+tr command
+----------
+The tr command in UNIX/Linux  is a command line utility for translating or deleting
+characters. It supports a range of transformations including uppercase to lowercase,
+squeezing repeating characters, deleting specific characters and basic find and 
+replace. It can be used with UNIX pipes to support more complex translation.
+tr stands for translate.
+
+Syntax :
+
+$ tr [OPTION] SET1 [SET2]
+Options
+
+-c : complements the set of characters in string.i.e., operations apply to
+     characters not in the given set
+-d : delete characters in the first set from the output.
+-s : replaces repeated characters listed in the set1 with single occurrence
+-t : truncates set1
+
+Now let me show you some examples about "tr":
+
+
+1. How to convert lower case to upper case
+
+echo "his name is Jack" | tr '[a-z]' '[A-Z]'
+
+Output:
+
+HIS NAME IS JACK
+
+cat intro | tr '[a-z]'  '[A-Z]' 
+will convert the entire "intro" file to upper case.
+
+2. How to use squeeze repetition of characters using -s
+To squeeze repeat occurrences of characters specified in a set use the -s option.
+This removes repeated instances of a character.
+OR we can say that,you can convert multiple continuous spaces with a single space
+
+echo "Welcome    To       CS160A" | tr -s ' '   ' ' 
+Output:
+
+Welcome To CS160A
+
+3. How to delete specified characters using -d option
+To delete specific characters use the -d option.This option deletes characters in the
+first set specified.
+
+echo "Abbas like Linux" | cd -d 'i'
+Output:
+
+Abbas lke Lnux
+
+4. To remove all the digits from the string, use
+
+echo "my ID is 73535" | tr -d '[0-9]'
+Output:
+
+my ID is
+
+
+5. How to translate white-space to tabs
+The following command will translate all the white-space to tabs
+
+echo "Welcome To CS160A" | tr " "   "\t"
+
+6. How to translate braces into parenthesis
+You can also translate from and to a file. In this example we will translate braces 
+in a file with parenthesis.
+tr '{}' '()'   intro
+
+7. How to complement the sets using -c option
+You can complement the SET1 using -c option. For example, to remove all characters except digits, you can use the following.
+
+$ echo "my ID is 73535" | tr -cd [:digit:]
+Output:
+
+73535
+
+############################## LESSON8 #########################################
+
+In the previous lessons, we talked about "grep". This is one of the most useful
+command in Unix/Linux. It has several options. The following link would discuss about
+some of the most useful command options in grep:
+
+https://www.opensourceforu.com/2012/06/beginners-guide-gnu-grep-basics/
+
+There are 2 commands "whoami" and "who am i" that would display the user's login-id
+So, if I type whoami, then I will see "amoghtan" on my terminal window on hills.
+There are some subtle differences between these 2 commands, but talking about
+these differences is beyond the scope of this course, and will be covered in 
+CS160B.
+
+
+####################
+We have already learned that "[A-Z]" means any upper case letter, or "[0-9]"
+means any digit, or "[a-zA-Z]" means any alphabet, or "[a-zA-Z0-9]" means
+any alphanumeric character.
+
+To negate their meanings, we are using a caret "^". So, "[^A-Z]" means no 
+upper case, and "[^0-9]" means no digit.
+
+ls -l | grep "^[^d]" means display any filename that is not a sub directory.
+
+By the way, the following line will do the same thing:
+ls -l | grep -v "^d"
+The "-v" option is negating the grep's search. It simply means, display those
+filenames that are NOT sub directory.
+
+In the previous lesson, I discussed about the "tr" command. Let's have some
+more practices with "tr".
+
+suppose we want to delete all of the extra "t"s from the following name
+and also capitalize it::
+
+echo "cattttttttttttttthy"  | tr -s  't'   't' | tr 'c' 'C'
+and the result is "Cathy"
+
+Some times we would like to place one command inside the other command. 
+For example:
+
+echo  "The date of today is: $(date)"
+
+The output of the above command would be something like:
+
+The date of today is: Wed Oct  7 19:43:03 PDT 2020
+
+As you see, I am placing the "date" command inside the "echo" command. 
+Example:
+
+echo "Number of sub directories : $(ls -l | grep '^d' | wc -l) "
+
+On my system, it displays:
+Number of sub directories : 14
+
+
+############################################
+Please pay attention to the dollar sign followed by a pair of parentheses in the
+above commands.
+
+ 
+
+
+############################## LESSON9 #########################################
+
+More about the cut command
+--------------------------
+####################################################################
+The fifth field of the output from "ls -l" is the file size.
+So, to display the file size one might do the following:
+
+ls -l | cut -d" " -f5
+
+But it does not work. The reason is, cut assumes only one delimiter between the 
+fields, but "ls -l" puts more than one delimiter. So, in order to work it out, we
+need to remove all of the extra spaces from "ls -l" and leave only one space between
+them:
+
+ls -l | tr  -s  ' '   ' ' | cut -d' ' -f5
+And it works.
+
+note:  
+-s, --squeeze-repeats
+replace  each input sequence of a repeated character that is listed in SET1 with a single
+occurrence of that character, so in the above the non-uniform spacing of "ls -l" is replaced 
+with a single white space!!!!!!!!!!!!!
+
+We can also use the "awk" command:
+
+ls -l | awk  '{print $5}'
+AWK assumes the delimiter is a white space (by default).
+The following command displays all shells from the 7th field of the passwd file:
+cat /etc/passwd | awk -F: '{print $7}'
+We will talk more about "awk" later on.
+
+#####################################################
+
+Compressors
+-----------
+
+Compressors are programs that are compressing files. Compressed files are much 
+smaller than the original files, and using less space.
+There are several compressors in Unix/Linux, but gzip and bzip2 are among the most
+popular ones.
+The following site is talking about gzip:
+https://linuxize.com/post/gzip-command-in-linux/
+And the following one is talking about bzip2:
+https://www.howtoforge.com/linux-bzip2-command/
+
+Archiver
+--------
+
+Archiving is a process of placing group of files and folders in another file.
+It is similar to place many of our items in our handbag or briefcase.
+There are several archivers available in Unix/Linux, but among them, "tar"
+and "cpio" are the most popular ones.
+The following sites are discussing about the "tar" command:
+
+https://www.howtogeek.com/248780/how-to-compress-and-extract-files-using-the-tar-command-on-linux/
+
+https://www.geeksforgeeks.org/tar-command-linux-examples/
+
+And the following is talking about "cpio":
+
+https://www.geeksforgeeks.org/cpio-command-in-linux-with-examples/
+
+/etc/passwd file
+----------------
+
+As you know by now, every user on Unix/Linux has a record in the /etc/passwd
+file. 
+So,       wc -l < /etc/passwd
+will show the total number of users on the system. Please be aware that this is
+different from the total number of users who are CURRENTLY logged in to the system.
+The /etc/passwd files has 7 fields in each record. These fields are delimited by a
+colon. The following shows the structure of a record in /etc/passwd:
+
+[--] - [--] [--] [-----] [--------] [--------]
+|    |   |    |     |         |        |
+|    |   |    |     |         |        +-> 7. Login shell
+|    |   |    |     |         +----------> 6. Home directory
+|    |   |    |     +--------------------> 5. GECOS
+|    |   |    +--------------------------> 4. GID
+|    |   +-------------------------------> 3. UID
+|    +-----------------------------------> 2. Password
++----------------------------------------> 1. Username
+
+
+The following site talks about the /etc/passwd file:
+
+https://linuxize.com/post/etc-passwd-file/
+
+/etc/group
+----------
+
+Each user in Unix/Linux should be a member of a group. The user can be a member of
+several groups, but should be a member of at least one group. 
+The group has a name (group name), and also has an ID (group id). 
+Field number 4 of /etc/passwd shows the group-id of the users.
+Unlike user-id and username, group name, and groupid should not necessarily be
+unique. In fact, several users can be a member of a specific group.
+The following site, talks about /etc/group:
+
+https://www.cyberciti.biz/faq/understanding-etcgroup-file/
+
+The /etc/group file has a record for each group. Each record has 4 fields delimited
+by a colon ":". 
+At CCSF, each course has its own group, and the groupname is in fact the CRN number
+of that course. 
+CRN number is a unique 5 digits number that would identify the course. For example,
+the CRN number of our course is: 71767.
+Since group names in Unix/Linux can not be completely numeric, we have added a letter
+"c" in-front of the group name. So, in the /etc/group file, the record for our 
+course has the "c71767" group name. 
+Let's locate and display the record of our group in the /etc/group file on hills:
+cat /etc/group | grep "^c32569"
+You will see something like the following:
+
+amoghtan,amaceir1,bchew4,cfazio,cfigue43,ichan30,jhern441,jjacob7,jpetani,jseelapa,kgarc127,kmclare2,kserrafi,lfaulds,mmoy5,nmarks5,nmucks,nwarner7,
+rguzman5,rherrer4,rnyima,rrowleyi,ssitu29,ttekie1,wwong4,vrogov1,kmcalli1,oreising,kamara1,ljimen24,mbravo13,emolhi,sspeas
+
+As you see, there are 4 fields separated by a colon. The first field is the group name,
+the second filed is the password files (It is no longer used), the 3rd field is 6976
+that is the groupid (GID), and field number four is the member field. it shows all of
+our login-names separated by a comma. Please pay attention to my name that is the
+VERY FIRST item in this field. So, the instructor's name always is the very first 
+name in this field. Can you see yours? 
+Counting the members in this field shows the total number of students in the class
+plus the teacher. Can you write a command to show the total number of students in this
+record?
+
+SED
+----
+
+SED is one of the most important commands in Unix/Linux. We are using it very 
+often in Linux. The following site gives you some information about the "sed'
+command:
+
+https://www.geeksforgeeks.org/sed-command-in-linux-unix-with-examples/
+
+awk
+----
+
+AWK is an interpreted programming language. It is very powerful and specially designed
+for text processing. Its name is derived from the family names of its authors Alfred Aho,
+Peter Weinberger, and Brian Kernighan.
+
+The version of AWK that GNU/Linux distributes is written and maintained by the Free
+Software Foundation (FSF); it is often referred to as GNU AWK.
+
+Types of AWK
+Following are the variants of AWK :
+
+AWK = Original AWK from AT & T Laboratory.
+
+NAWK = Newer and improved version of AWK from AT & T Laboratory.
+
+GAWK = It is GNU AWK. All GNU/Linux distributions ship GAWK. It is fully compatible
+with AWK and NAWK.
+
+The following site talks about "awk":
+https://www.tutorialspoint.com/awk/index.htm
+
+
+
+############################## LESSON10 #########################################
+ cd  /pub/cs/amoghtan/cs160a
+chmod command
+-------------
+
+  In Unix/linux, any file is dealing with 3 types of users:
+  1) owner of the file
+  2) people in the same group
+  3) others
+
+  Each file has read, write, and execute permit.
+  Read permit has the value of 4 (it is shown as 'r').
+  Write permit has value of 2 (it is shown as 'w').
+  Execute permit has value of 1 (it is shown as 'x').
+  So,
+  In the ls -l command, 9 columns are designated to represent the file permission.
+  The first 3 are for the owner.
+  The second 3 are for the group.
+  The last 3 are for the others.
+  So,
+
+  rwx------     means the owner has read, write, and execute permits.
+  The group and others have nothing (is depicted by a dash '-').
+  rw-r--r--     means the owner has read and write, the group has read, and the
+  others also have the read permission.
+  The set, or change the permission on any file, we are using the chmod command.
+  The easiest way to use this command is the numerical approach. 
+  For example:
+  chmod 700   myfile
+  gives read, and write, and execute permissions to the owner (4+2+1=7),
+  and nothing for the group, and nothing for the others (represented by zero).
+  chmod 543  myfile
+  means, read and execute for the owner (4+1=5), and read for the group (4+0+0=4),
+  and write and execute for the others (0+2+1=3).
+  The ls -l myfile would show something like this:
+  -r-xr---wx
+  The following site would provide more information. Please read it carefully:
+  https://linuxize.com/post/chmod-command-in-linux/
+
+  fold command
+  ------------
+  Please read the following site to get info about this command. It is a very useful
+  command in Unix/Linux.
+  https://shapeshed.com/unix-fold/
+
+  id command
+  ----------
+
+  id command in Linux is used to find out user and group names and numeric IDs
+  (UID or group ID) of the current user or any other user in the server.
+   This command is useful to find out the following information as listed below:
+
+   User name and real user id.
+   Find out the specific Users UID.
+   Show the UID and all groups associated with a user.
+   List out all the groups a user belongs to.
+   Display security context of the current user.
+   For more information, please read the following site:
+   https://www.geeksforgeeks.org/id-command-in-linux-with-examples/ 
+
+   file command
+   ------------
+
+   The file command determines the file type of a file. It reports the file type in
+   human readable format (e.g. ASCII text) or MIME type (e.g. text/plain;
+   charset=us-ascii. As filenames in UNIX can be entirely independent of file type
+   file can be a useful command to determine how to view or work with a file.
+   For more information, please read the following site:
+   https://shapeshed.com/unix-file/
+
+
+   find command
+   ------------
+      
+   The Linux Find Command is one of the most important and frequently used 
+   command Unix-like operating systems. Find command is used to search and 
+   locate the list of files and directories based on conditions you specify 
+   for files that match the arguments.
+
+   Find can be used in a variety of conditions like you can find files by 
+   permissions, users, groups, file type, date, size, and other possible 
+   criteria.
+
+   For more information about the find command, please see the following sites:
+
+   https://linuxize.com/post/how-to-find-files-in-linux-using-the-command-line/
+   https://www.tecmint.com/35-practical-examples-of-linux-find-command/
+   https://geekflare.com/linux-find-commands/
+

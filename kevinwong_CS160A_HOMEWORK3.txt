@@ -1,0 +1,31 @@
+Kevin Wong 
+CS 160A
+Homework #3
+Due: 9/21/2021                        
+
+1) Using wildcards, display those filenames in our public directory on hills, that 
+begin with the letter d or g or m. Please show your command.
+
+ls d* g* m*
+
+2) Using wildcards, display those filenames in our public directory on hills, that
+consist of only one letter. Please show your command.
+
+ls ?
+
+3) The file /etc/passwd has records about all of the users on hills. Each record
+in this file belongs to one user.
+Please show the total numbers of users on hills. Please show your command.
+
+9407 users
+wc -l < /etc/passwd
+
+4) Please explain why the output of the following commands is not the same:
+
+echo "John" | wc -l
+echo -n "John" | wc -l
+
+echo "John" | wc -l would output 1 because a new line trails after "echo" outputs "John". So the
+line count would be "1".
+echo -n "John" | wc -l would output 0 because the "-n" option removes the trailing new-line after
+outputting "John". So the line count would be "0".

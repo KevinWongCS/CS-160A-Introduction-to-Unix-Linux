@@ -1,0 +1,64 @@
+Kevin Wong 
+CS 160A
+Homework #6
+Due 10/19/21. 
+Each question is worth 4 points.
+
+1) What does the following command do? 
+
+   date | tr -d "[^A-Za-z]" | tr -s ' ' ' '
+
+Shows the day, time, and year with uniform spacing of "1 space".
+
+2) Find number of users on hills whose user ids are greater than 99.
+   For your information, user ids are in the 3rd field of the /etc/passwd file
+
+[kwong43@hills ~]$ awk -F: '{if ($3 > 99) print}' /etc/passwd | wc -l
+9392
+
+3) Find all logged-in users with the user names of at least four characters.
+
+[kwong43@hills ~]$ who | awk 'length($0) >= 4'
+kwong43  pts/0        Oct 13 11:50 (24.5.29.213)
+cbenning pts/2        Oct 13 10:26 (157.131.247.212)
+etorre82 pts/3        Oct 13 12:07 (68.6.84.86)
+hmoral19 pts/4        Oct 13 11:01 (73.202.9.142)
+rmedran4 pts/5        Oct 13 11:51 (156.1.40.45)
+jwuorenm pts/6        Oct 13 11:55 (128.32.161.98)
+athornto pts/7        Oct 13 12:00 (67.188.210.111)
+dnejasmi pts/8        Oct 13 12:10 (76.103.74.9)
+rpinhei1 pts/9        Oct 13 12:13 (69.149.123.95)
+mgannett pts/10       Oct 13 12:14 (24.4.232.255)
+
+4) Please show how you can display the following message on hills:
+
+
+My login-id is: XXXX
+where XXXX is your login-id. For example, for me the output should look like:
+
+My login-id is: amoghtan
+
+Please note that, your command should work for every body. So, if I use your
+command, it should work for me as well.
+
+
+[kwong43@hills ~]$ echo "My login-id is: $(whoami)"
+My login-id is: kwong43
+
+5) On hills, those students who are not allowed to access the system, have "/sbin/nologin"
+   in their shell field (field number 7 of the /etc/passwd).
+   Please show me how to count number of students who are disabled from accessing hills.
+   I need to see your command. Your output should look like the following:
+
+   The number of disabled students on hills: whatever 
+
+
+[kwong43@hills ~]$ echo "The number of disabled students on hills: \
+$(awk -F: '/\/sbin\/nologin/{print $0}' /etc/passwd | wc -l)"
+The number of disabled students on hills: 30
+
+### or filtering for keyword "students" in column 6 ###
+
+[kwong43@hills ~]$ echo "The number of disabled students on hills: \
+$(awk -F: '/students/{print $0}' /etc/passwd | grep "/sbin/nologin" | wc -l)"
+The number of disabled students on hills: 0

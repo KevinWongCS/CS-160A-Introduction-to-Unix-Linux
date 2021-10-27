@@ -1,0 +1,73 @@
+                        Solution To CS160A Homework #4
+                        ------------------------------
+
+
+1) Please show the last 10 students login-ids on hills. Please make sure to display
+   the login-ids only. The login-ids are all part of the /etc/passwd file.
+
+
+tail /etc/passwd | cut -d: -f1 
+
+The output is:
+
+ktoy9
+zrivera4
+dstine
+mkellom1
+cmonson11
+mbertent
+gkhoury2
+ngilber6
+bhall14
+mthom227
+
+2) Using the "date" command, please display the "year" field of this command.
+   You need to use the "cut" command to answer this question.
+
+
+date | cut -d' ' -f6
+
+
+3) The 7th field of the /etc/passwd file is representing the "shell". Please
+   show how to display the first 10 shells from the /etc/passwd file on hills.
+   You need to display only the shells from this file. 
+
+
+head /etc/passwd | cut -d: -f7 
+
+The output is:
+
+/bin/bash
+/sbin/nologin
+/sbin/nologin
+/sbin/nologin
+/sbin/nologin
+/bin/sync
+/sbin/shutdown
+/sbin/halt
+/sbin/nologin
+/sbin/nologin
+
+4) Please show how to count number of users who are currently logged-in to hills.
+
+
+who | wc -l
+
+
+5) What are the contents of the file "myfile" when the following commands are
+   completed:
+
+   echo "good bad nice ugly pretty"  > myfile; sort myfile > myfile; cat myfile
+
+   You need to explain what is really happening.
+
+
+The file myfile is empty when the commands are completed.
+
+It first creates a file named "myfile" in the current directory.
+Then the echo command writes the content "good bad nice ugly pretty" into myfile.
+But the sort myfile > myfile command actually deletes everything in the myfile in
+the first place, so when the sort command executes, there's nothing in myfile.
+Therefore, when we use the cat myfile command, there's nothing displaying, because the
+file is empty by then. 
+

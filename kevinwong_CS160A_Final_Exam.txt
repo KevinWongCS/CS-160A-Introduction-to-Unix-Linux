@@ -1,0 +1,72 @@
+                                     CS160A Final Exam
+                                     -----------------
+
+Exam will be over by 6:00 P.M. this afternoon.
+I will not accept any solution after 6:00 P.M.
+Each question is worth  10 points.
+Please email me your answers.
+
+
+
+ 1) Please give the names of 3 Unix versions.
+
+Unix V6, Unix System V, and SunOS or Sun Solaris.
+
+ 2) Please give the names of 3 Linux distros.
+
+Ubuntu, Red Hat Enterprise, and Fedora.
+
+ 3) Please write a command to display the name of the faculty who is in charge of
+    teaching the course identified by this CRN number: c79625
+    
+[kwong43@hills cs160a]$ cat /etc/group | grep "^c79625" | cut -d, -f1 | cut -d: -f4
+
+
+ 4) Write a command to display the loggin-id of those users who are currently
+    logged-in to the hills system, and their login-ids begin with "a".
+
+[kwong43@hills cs160a]$ who | grep '^a'
+apippeng pts/12       Oct 21 16:04 (107.133.146.15)
+alin39   pts/13       Oct 21 15:56 (67.161.34.132)
+alin39   pts/15       Oct 21 15:56 (67.161.34.132)
+alin39   pts/18       Oct 21 15:59 (67.161.34.132)
+aibanezi pts/19       Oct 21 16:14 (172.58.89.68)
+
+5) What is the equivalent of the following command without using "awk"?
+
+    ls -l | awk '{print $5}'
+[kwong43@hills cs160a]$ ls -l | tr  -s  ' '   ' ' | cut -d' ' -f5
+
+6)  What does the following command do. Please note that I'm not asking you to explain 
+    what each individual part of the command is doing. 
+
+    ls -l | cut -c2-4
+
+The command displays the owners permissions in the standard output.
+
+7)  What do the following commands do?
+    head -1 myfile  > his_file
+    tail -1 myfile >> his_file
+
+"head -1 myfile  > his_file" takes the first line of "myfile" and replaces the text in
+"his_file".
+
+"tail -1 myfile >> his_file" takes the last line of "myfile" and appends it to 
+"his_file" preserving the text inside of "his_file".
+
+
+8)  What is the equivalent of "cat -n myfile"  command?
+
+nl myfile
+
+9)  Please show how to count number of files in the all_my_files.tgz compressed
+    archive file. I need to see your command(s).
+
+tar -tzf all_my_files.tgz | wc -l
+
+10) What is the numeric representation of the following file permission?
+    rw-r-x--x
+4+2+0 = 6
+4+0+1 = 5
+0+0+1 = 1
+651 is the numeric representation of the permission.

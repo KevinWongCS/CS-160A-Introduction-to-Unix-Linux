@@ -1,0 +1,63 @@
+Solution to the homework #1
+---------------------------
+
+
+1) 
+    a) 24  
+    The following shows the list of these files:
+
+CS160A_HOMEWORK1
+CS160A_LESSON1
+CS160A_LESSON2
+CS160A_SYLLABUS
+EDI_info
+HOW_ACCESS_PUBLIC_DIRECTORY
+LOGIN_TO_HILLS
+Linux_and_NASA
+WELCOME_CS160A
+a
+accomodations_info
+anti_descrimination_info
+b
+c
+cs160a_slo
+d
+datafile
+demo_sed
+e
+f
+glue
+last_files
+lcmp
+mkshell
+     
+    b) 9
+    The following shows the list of these files:
+
+CS160A_HOMEWORK1
+CS160A_LESSON1
+CS160A_LESSON2
+CS160A_SYLLABUS
+EDI_info
+HOW_ACCESS_PUBLIC_DIRECTORY
+LOGIN_TO_HILLS
+Linux_and_NASA
+WELCOME_CS160A
+
+
+    c) 9   
+    The following shows the list of these files:
+
+CS160A_HOMEWORK1
+CS160A_LESSON1
+CS160A_LESSON2
+CS160A_SYLLABUS
+WELCOME_CS160A
+cs160a_slo
+fall_2020
+spring2020
+spring21
+
+2)  a, c, d, f  are empty.  I used the "cat" command to find out which one is
+    empty, and which one is not.
+
